@@ -1,0 +1,16 @@
+---
+sw1:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.6
+sw2:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.7
+sw3:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.20.20.5
