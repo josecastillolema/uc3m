@@ -28,14 +28,26 @@ Con Podman:
 sudo containerlab deploy --runtime podman -t stp-lab.clab.yml
 ```
 
+Ver contenedores con Docker:
+```bash
+sudo docker ps
+```
 
-Ver contenedores:
+Ver contenedores con Podman:
 ```bash
 sudo podman ps
 ```
 
 ### Acceso a los switches
 
+Con Docker:
+```bash
+sudo docker exec -it clab-stp-lab-sw1 sh
+sudo docker exec -it clab-stp-lab-sw2 sh
+sudo docker exec -it clab-stp-lab-sw3 sh
+```
+
+Con Podman:
 ```bash
 sudo podman exec -it clab-stp-lab-sw1 sh
 sudo podman exec -it clab-stp-lab-sw2 sh
@@ -121,6 +133,13 @@ bridge monitor br0
     ```
 
 ### Destruir el laboratorio
+
+Con Docker:
+```bash
+sudo containerlab destroy -t stp-lab.clab.yml
+```
+
+Con Podman:
 ```bash
 sudo containerlab destroy --runtime podman -t stp-lab.clab.yml
 ```
