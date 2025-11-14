@@ -1,0 +1,31 @@
+name: stp-lab
+topology:
+  nodes:
+    sw1:
+      kind: linux
+      image: alpine:latest
+      binds:
+        - ./setup-stp.sh:/root/setup-stp.sh
+      exec:
+        - apk add --no-cache iproute2 bridge-utils
+        - sh /root/setup-stp.sh
+    sw2:
+      kind: linux
+      image: alpine:latest
+      binds:
+        - ./setup-stp.sh:/root/setup-stp.sh
+      exec:
+        - apk add --no-cache iproute2 bridge-utils
+        - sh /root/setup-stp.sh
+    sw3:
+      kind: linux
+      image: alpine:latest
+      binds:
+        - ./setup-stp.sh:/root/setup-stp.sh
+      exec:
+        - apk add --no-cache iproute2 bridge-utils
+        - sh /root/setup-stp.sh
+  links:
+    - endpoints: ["sw1:eth1", "sw2:eth1"]
+    - endpoints: ["sw2:eth2", "sw3:eth1"]
+    - endpoints: ["sw3:eth2", "sw1:eth2"]
