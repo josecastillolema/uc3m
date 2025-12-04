@@ -5,10 +5,6 @@
 Este laboratorio implementa un escenario básico para estudiar STP (Spanning Tree Protocol) usando Containerlab, Linux bridges y imágenes Alpine.
 Incluye tres switches interconectados en un triángulo, permitiendo observar la convergencia del STP, bloqueo de puertos, elección de *root bridge* y comportamiento ante fallos.
 
-Pre requisitos:
- - Podman (o Docker)
- - Containerlab
-
 Topología:
 ```
    sw1
@@ -33,6 +29,10 @@ sw2---sw3
 ---
 
 ### Entorno local
+
+Pre requisitos:
+ - [Podman](https://podman.io/) (o [Docker](https://www.docker.com/))
+ - [Containerlab](https://containerlab.dev/)
 
 Con Docker:
 ```bash
