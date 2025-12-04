@@ -16,6 +16,8 @@ Topología:
 sw2---sw3
 ```
 
+## Despliegue del laboratorio
+
 ### GitHub Codespaces
 
 ---
@@ -31,7 +33,7 @@ sw2---sw3
 ---
 
 
-### Despliegue del laboratorio
+### Local
 
 Con Docker:
 ```bash
@@ -53,7 +55,7 @@ Ver contenedores con Podman:
 sudo podman ps
 ```
 
-### Acceso a los switches
+#### Acceso a los switches
 
 Con Docker:
 ```bash
@@ -69,7 +71,7 @@ sudo podman exec -it clab-stp-lab-sw2 sh
 sudo podman exec -it clab-stp-lab-sw3 sh
 ```
 
-### Comandos útiles de STP en Linux
+#### Comandos útiles de STP en Linux
 
 Ver puertos y su estado:
 ```sh
@@ -91,7 +93,7 @@ Ver cambios en vivo:
 bridge monitor br0
 ```
 
-### Ejercicios
+## Ejercicios
 
 1. Identificar el root bridge por defecto
 
@@ -147,7 +149,11 @@ bridge monitor br0
     ip link set eth1 up
     ```
 
-### Destruir el laboratorio
+## Destruir el laboratorio
+
+### GitHub Codespaces
+
+### Entorno local
 
 Con Docker:
 ```bash
