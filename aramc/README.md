@@ -25,7 +25,6 @@ sw2---sw3
 [Learn more](https://containerlab.dev/manual/codespaces) about Containerlab for Codespaces.  
 <small>Machine type: 2 vCPU · 8 GB RAM</small>
 </div>
-
 ---
 
 ### Entorno local
