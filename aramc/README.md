@@ -32,8 +32,7 @@ sw2---sw3
 
 ---
 
-
-### Local
+### Entorno local
 
 Con Docker:
 ```bash
