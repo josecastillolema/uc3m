@@ -21,7 +21,7 @@
 ## Spanning Tree Protocol (STP)
 
 Este laboratorio implementa un escenario básico para estudiar STP (Spanning Tree Protocol) usando Containerlab, Linux bridges y imágenes Alpine.
-Incluye tres switches interconectados en un triángulo, permitiendo observar la convergencia del STP, bloqueo de puertos, elección de *root bridge* y comportamiento ante fallos.
+Incluye tres switches interconectados en un triángulo, permitiendo observar la convergencia del STP, bloqueo de puertos, elección del *root bridge* y comportamiento ante fallos.
 
 Topología:
 ```
