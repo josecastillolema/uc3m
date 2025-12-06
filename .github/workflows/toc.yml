@@ -3,16 +3,14 @@ on:
   push:
     paths:
       - 'aramc/README.md'
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
       
 jobs:
-  generate_toc:
+  generateTOC:
+    name: TOC Generator
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
       - uses: technote-space/toc-generator@v4 
         with:
           TARGET_PATHS: aramc/README.md 
-          MAX_HEADER_LEVEL: 3
