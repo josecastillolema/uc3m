@@ -1,3 +1,21 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Arquitectura de Redes de Acceso y Medio Compartido](#arquitectura-de-redes-de-acceso-y-medio-compartido)
+  - [Spanning Tree Protocol (STP)](#spanning-tree-protocol-stp)
+  - [Despliegue del laboratorio](#despliegue-del-laboratorio)
+    - [GitHub Codespaces](#github-codespaces)
+    - [Entorno local](#entorno-local)
+      - [Acceso a los switches](#acceso-a-los-switches)
+      - [Comandos útiles de STP en Linux](#comandos-%C3%BAtiles-de-stp-en-linux)
+  - [Ejercicios](#ejercicios)
+  - [Destruir el laboratorio](#destruir-el-laboratorio)
+    - [GitHub Codespaces](#github-codespaces-1)
+    - [Entorno local](#entorno-local-1)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Arquitectura de Redes de Acceso y Medio Compartido
 
 ## Spanning Tree Protocol (STP)
