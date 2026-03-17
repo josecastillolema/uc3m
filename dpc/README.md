@@ -9,7 +9,7 @@ Among others, the following anonymity techniques can be applied:
  - l-diversity
  - t-closeness
 
-Load the files of this folder into a [Google Colab](https://colab.research.google.com/) Notebook using your UC3M account and follow the instructions in [privacy.ipyng](/dpc/privacy.ipyng).
+Load the files of this folder into a [Google Colab](https://colab.research.google.com/) Notebook using your UC3M account and follow the instructions in [privacy.ipynb](/dpc/privacy.ipynb).
 
 Each project refers to lectures and/or labs conducted in the classroom.
 
