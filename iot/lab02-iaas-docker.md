@@ -1,4 +1,4 @@
-# Lab 1 - Docker
+# Lab 2 - Docker
 
 Usaremos la imagen oficial `Amazon Linux` para aprender algunos conceptos importantes de [Docker](https://www.docker.com/):
  - instalación
@@ -9,11 +9,7 @@ Vamos a trabajar con dos terminales abiertos (**T1** y **T2**).
 
 ## Pre-reqs
 
-Una máquina virtual `Ubuntu Linux 18.04` en Microsoft Azure **o** `Amazon Linux` en AWS:
-
-- Una máquina virtual en Microsoft Azure con `Ubuntu Linux 18.04`. Seguir los pasos del lab [lab 01 - Virtual Machines](/net/devops/lab01-iaas-vm.md).
-
-- Una máquina virtual en AWS EC2 con `Amazon Linux`. Seguir los pasos del lab [lab 01 - EC2](/shift/multicloud/lab01-iaas-ec2.md).
+Una máquina virtual `Amazon Linux` en AWS.
 
 ## Instalación
 
@@ -38,7 +34,6 @@ Una máquina virtual `Ubuntu Linux 18.04` en Microsoft Azure **o** `Amazon Linux
 
     d. Añadir el usuario (`ec2-user`) al grupo `docker`:
 
-    [Amazon Linux]
     ```
     $ sudo usermod -aG docker ec2-user
     ```
