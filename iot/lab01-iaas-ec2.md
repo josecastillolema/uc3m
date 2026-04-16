@@ -157,6 +157,7 @@ Usaremos la imagem oficial `Amazon Linux` para aprender algunos conceptos import
     ```
 
 2.  Habilitar el servicio `httpd`:
+
     ```
     [ec2-user@ip-172-31-50-1 ~]$ sudo service httpd start
     Redirecting to /bin/systemctl start httpd.service
