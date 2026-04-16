@@ -37,7 +37,8 @@ Usaremos la imagem oficial `Amazon Linux` para aprender algunos conceptos import
     [**Windows**] Usaremos el cliente nativo de SSH (o si no está disponible [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) siguiendo estas [instrucciones](https://docs.aws.amazon.com/es_es/AWSEC2/latest/UserGuide/putty.html)). Como alternativa a PuTTy, [MobaXterm](https://mobaxterm.mobatek.net/) es una buena opción.
 
 9. [**Linux/MAC**] En un terminal local:
-    ```
+
+    ```sh
     $ chmod 400 iffe.pem
     $ ssh -i "iffe.pem" ec2-user@ec2-34-207-181-0.compute-1.amazonaws.com
 
@@ -50,7 +51,8 @@ Usaremos la imagem oficial `Amazon Linux` para aprender algunos conceptos import
     ```
 
 10. Una vez logado en la máquina virtual, confirmar que el script de **cloud-init** fue ejecutado:
-    ```
+
+    ```sh
     $ ls /tmp/
     cloudInitFunciona
     ```
@@ -58,7 +60,8 @@ Usaremos la imagem oficial `Amazon Linux` para aprender algunos conceptos import
 ## Instalando un servidor web
 
 1.  Instalar el paquete `httpd`:
-    ```
+
+    ```sh
     [ec2-user@ip-172-31-50-1 ~]$ sudo yum install -y httpd
     Failed to set locale, defaulting to C
     Loaded plugins: extras_suggestions, langpacks, priorities, update-motd
@@ -164,6 +167,7 @@ Usaremos la imagem oficial `Amazon Linux` para aprender algunos conceptos import
     ```
 
 3.  Crear un *website* de teste, en el archivo `/var/www/html/index.html` (como usuário *admin*):
+
     ```
     <h1>
        IFFE o/ !!!
@@ -171,6 +175,7 @@ Usaremos la imagem oficial `Amazon Linux` para aprender algunos conceptos import
     ```
 
 4.  Testar localmente el servidor web:
+
     ```
     [ec2-user@ip-172-31-50-1 ~]$ curl localhost
     <h1>
