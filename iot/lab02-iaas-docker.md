@@ -1,3 +1,4 @@
+<!-- cSpell:language en,es -->
 # Lab 2 - Docker
 
 Usaremos la imagen oficial `Amazon Linux` para aprender algunos conceptos importantes de [Docker](https://www.docker.com/):

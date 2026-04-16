@@ -1,3 +1,4 @@
+<!-- cSpell:language en,es -->
 # Internet de las Cosas
 
 ## Cloud

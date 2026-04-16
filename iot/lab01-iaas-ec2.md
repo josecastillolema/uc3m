@@ -1,3 +1,4 @@
+<!-- cSpell:language en,es -->
 # Lab 2 - AWS EC2
 
 ## Creando la instancia
