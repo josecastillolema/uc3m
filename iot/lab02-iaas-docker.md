@@ -17,17 +17,20 @@ Una máquina virtual `Amazon Linux` en AWS.
 1. **[T1]** Instalación de Docker
 
     a. Instalar el software
+
     ```
     $ sudo yum install -y docker
     ```
 
     b. Iniciar el servicio:
+
     ```
     $ sudo systemctl start docker
     $ sudo systemctl enable docker
     ```
 
     c. Verificar que el usuario no forma parte del grupo `docker`, y consecuentemente no tiene permiso para ejecutar comandos `docker`:
+
     ```
     $ groups
     ubuntu adm dialout cdrom floppy sudo audio dip video plugdev lxd netdev
@@ -40,6 +43,7 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
     e. Reiniciar la VM para que los cambios de grupo sean aplicados:
+
     ```
     $ sudo reboot
     Connection to ec2-18-210-19-170.compute-1.amazonaws.com closed by remote host.
@@ -47,12 +51,14 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
     f. Después del reboot, confirmar que el usuario pertenece al grupo `docker`:
+
     ```
     $ groups
     ec2-user adm dialout cdrom floppy sudo audio dip video plugdev lxd netdev docker
     ```
 
     g. Ejecutar un `docker version` para validar la instalación, y verificar que se muestra tanto la versión del cliente **como la del servidor**:
+
     ```
      $ docker version
      Client:
@@ -87,12 +93,14 @@ Una máquina virtual `Amazon Linux` en AWS.
 ## Primeros pasos
 
 2. **[T1]** Listar las imágenes del repositorio local (el catálogo debería estar vacío, pues no hemos descargado ninguna imagen aún):
+
     ```
     $ docker images
     REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
     ```
 
 3. **[T1]** Buscar imágenes dentro del catálogo de [DockerHub](https://hub.docker.com/):
+
     ```
     $ docker search mongodb
     NAME                                DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
@@ -124,6 +132,7 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
 4. **[T1]** Hacer el *download* (`pull`) de la imagen de Ubuntu en el repositorio local:
+
     ```
     $ docker pull ubuntu
     Using default tag: latest
@@ -138,6 +147,7 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
 5. **[T1]** Listar las imágenes nuevamente, verificar que existe la imagen `ubuntu`:
+
     ```
     $ docker images
     REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
@@ -145,17 +155,20 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
 6. **[T1]** Eliminar la imagen (opcional):
+
     ```
     $ docker image rm ubuntu
     ```
 
 7. **[T1]** Ejecutar un comando de ejemplo (`hostname`) dentro del contenedor:
+
     ```
     $ docker run ubuntu hostname
     c293c1989a56
     ```
 
 8. **[T1]** Medir el tiempo del comando anterior:
+
     ```
     $ time docker run ubuntu hostname
     7aa02808ccfc
@@ -171,6 +184,7 @@ Una máquina virtual `Amazon Linux` en AWS.
     - Eliminó el contenedor
 
 9. **[T1]** Verificar que tanto el contenedor como el *host* comparten el Kernel:
+
     ```
     $ uname -a
     Linux ip-172-31-60-180 5.3.0-1023-aws #25~18.04.1-Ubuntu SMP Fri Jun 5 15:18:30 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
@@ -180,12 +194,14 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
 10. **[T1]** Ejecutar la imagen `ubuntu` en modo interactivo. Obsérvese que el `prompt` cambia cuando entramos en el contenedor: usuario `root` con hostname `5b83d8b5b521` (el ID del contenedor en este caso).
+
     ```
     $ docker run -it ubuntu
     root@d8924e5138b3:/#
     ```
 
 11. **[T2]** **Sin salir del contenedor en el 1er terminal**, listar los contenedores en ejecución **en el 2do terminal**:
+
     ```
     $ docker ps
     CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
@@ -193,6 +209,7 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
 12. **[T1]** Continuando en el 1er terminal, crear un archivo aún dentro del contenedor y salir del contenedor:
+
     ```
     root@d8924e5138b3:/# touch meuArquivo
 
@@ -204,12 +221,14 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
 13. **[T1]** Verificar que el contenedor ya no está en ejecución:
+
     ```
     $ docker ps
     CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
     ```
 
 14. **[T1]** Ejecutar el contenedor nuevamente, y confirmar que el archivo creado ya no existe. **Los contenedores son efímeros**, no almacenan ningún tipo de cambio, sean archivos, datos, software instalado, etc.:
+
     ```
     $ docker run -it ubuntu
     root@5b83d8b5b521:/# ls
@@ -229,6 +248,7 @@ Una máquina virtual `Amazon Linux` en AWS.
     Vamos a crear una imagen personalizada instalando algún *software*, por ejemplo `nmap` (un *scanner* de puertos).
 
     a. **[T1]** **Sin salir del contenedor**, actualizar los repositorios:
+
     ```
     root@5b83d8b5b521:/# apt update
     Get:1 http://security.ubuntu.com/ubuntu focal-security InRelease [107 kB]
@@ -256,6 +276,7 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
     b. **[T1]** Instalar el paquete `nmap`. El flag `-y` omite la pregunta de confirmación:
+
     ```
     root@5b83d8b5b521:/# apt install -y nmap
     Reading package lists... Done
@@ -324,6 +345,7 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
     c. **[T1]** Verificar la versión instalada:
+
     ```
     root@5b83d8b5b521:/# nmap --version
     Nmap version 7.80 ( https://nmap.org )
@@ -334,6 +356,7 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
     d. **[T2]** En el 2do terminal, confirmar el ID del contenedor en ejecución (en el cual acabamos de instalar `nmap`):
+
     ```
     $ docker ps
     CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
@@ -341,12 +364,14 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
     e. **[T2]** Crear una nueva imagen (`ubuntu_com_nmap`) a partir del contenedor:
+
     ```
     $ docker commit 5b8 ubuntu_com_nmap
     sha256:287d2c84024a50ba13c9d8304d57df853feea9b3dd9df785313111480a84eecc
     ```
 
     f. Confirmar la creación de la imagen (con un tamaño mayor que la imagen original):
+
     ```
     $ docker images
     REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
@@ -355,6 +380,7 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
     g. Confirmar que en la nueva imagen, efectivamente tiene `nmap` instalado:
+
     ```
     $ docker run ubuntu_com_nmap nmap --version
     Nmap version 7.80 ( https://nmap.org )
@@ -365,6 +391,7 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
     h. Confirmar que la imagen original no fue alterada y no tiene `nmap` instalado:
+
     ```
     $ docker run ubuntu nmap --version
     docker: Error response from daemon: OCI runtime create failed: container_linux.go:349: starting container process caused "exec: \"nmap\": executable file not found in $PATH": unknown.
@@ -375,6 +402,7 @@ Una máquina virtual `Amazon Linux` en AWS.
 16. Personalización de imágenes vía **Dockerfile**. Este es el método recomendado para personalizar imágenes, pues es más reproducible que `docker commit`.
 
     a. Crear el archivo `Dockerfile` con el siguiente contenido:
+
     ```
     FROM ubuntu
 
@@ -385,6 +413,7 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
     b. "Compilar" el `Dockerfile`:
+
     ```
     $ docker build -t ubuntu-com-nmap-viadockerfile .
     Sending build context to Docker daemon  15.87kB
@@ -490,6 +519,7 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
     c. Verificar que la nueva imagen fue creada (y tiene el mismo tamaño que la imagen creada vía `docker commit`):
+
     ```
     $ docker images
     REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE
@@ -499,6 +529,7 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
     d. Probar la nueva imagen:
+
     ```
     $ docker run ubuntu-com-nmap-viadockerfile nmap --version
     Nmap version 7.80 ( https://nmap.org )
@@ -515,6 +546,7 @@ Una máquina virtual `Amazon Linux` en AWS.
     a. Crear una cuenta gratuita
 
     b. Iniciar sesión en la cuenta desde el terminal con el usuario recién creado:
+
     ```
     $ docker login
     Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
@@ -528,11 +560,13 @@ Una máquina virtual `Amazon Linux` en AWS.
     ```
 
     c. Etiquetar la imagen. El nombre de la imagen debe ser `username/nombre de la imagen`:
+
     ```
     $ docker tag ubuntu-com-nmap-viadockerfile josecastillolema/fiap-bdt
     ```
 
     d. Hacer el *upload* (`push`) de la imagen:
+
     ```
     $ docker push josecastillolema/fiap-bdt
     ```

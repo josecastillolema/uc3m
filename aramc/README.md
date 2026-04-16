@@ -116,6 +116,7 @@ bridge monitor br0
 1. Identificar el root bridge por defecto
 
    Ejecutar en cada nodo:
+
     ```sh
     bridge -s link
     ```
@@ -125,11 +126,13 @@ bridge monitor br0
 2. Forzar que un switch sea el *root bridge*
 
     Ejemplo en **sw3**:
+
     ```sh
     ip link set br0 type bridge priority 0
     ```
 
     Ver cambios:
+
     ```sh
     bridge -s link
     ```
@@ -137,18 +140,21 @@ bridge monitor br0
 3. Simular fallo de enlace
 
     Ejemplo en **sw2**:
+
     ```sh
     ip link set eth2 down
     ```
 
 
     Observar reconvergencia:
+
     ```sh
     bridge -s link
     ```
 
 
     Restaurar:
+
     ```sh
     ip link set eth2 up
     ```
@@ -156,11 +162,13 @@ bridge monitor br0
 4. Observar STP en tiempo real mientras se reactiva un puerto
 
     En una consola:
+
     ```sh
     bridge monitor br0
     ```
 
     En otra:
+
     ```sh
     ip link set eth1 down
     sleep 4
